@@ -80,13 +80,26 @@ TWEETS
 
 =====================================*/
 
+.stream {
+  width: 33%;
+  margin-left: 33%;
+}
+
 div {
   border: #125454 solid 3px;
   background-color: #b9cfcf;
-  width: 33%;
   padding: 15px;
   margin: 10px;
-  margin-left: 33%;
   font-weight: 400;
   line-height: 25px;
+}
+
+/*=====================================
+
+Username
+
+=====================================*/
+
+.username {
+  font-weight: 700;
 }
