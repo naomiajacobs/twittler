@@ -1,16 +1,13 @@
 /*
 To-Do:
-  Add highlight feature that changes tweet color when hovered over
   *Make User stream update
-  Adjust positioning so that without a user stream, the tweets are centered, but with a user stream, they split-screen
-  Make colors better
-  Add button to hide user stream
-  Make tweets update automatically?
+  *figure out why usernames don't work after show new tweets button is clicked
 */
 
 
 $(document).ready(function(){
 
+  //show main tweet stream
   var showNewTweets = function() {
 
     $('.stream').html('');
@@ -26,12 +23,15 @@ $(document).ready(function(){
       $tweet.appendTo($('.stream'));
       index -= 1;
     }
+
   };
 
+  //load tweets when page loads
   showNewTweets();
 
   $('.new-tweets').click(showNewTweets);
 
+  //show user's specific tweets
   var showUserTweets = function(user) {
 
     $('.user-tweets').html('');
@@ -50,12 +50,23 @@ $(document).ready(function(){
 
   };
 
-  $('.tweet').on('click', function() {
+  var username;
 
-    var username = $(this).find('.username').text();
+  //show user's tweets when tweet is clicked on
+  $('.tweet').click(function() {
+
+    username = $(this).find('.username').text();
+
+    alert(username);
+
+    $('.new-user-tweets').text('Show New Tweets From ' + username);
 
     showUserTweets(username);
 
+  });
+
+  $('.new-user-tweets').click(function() {
+    showUserTweets(username);
   });
 
 });
