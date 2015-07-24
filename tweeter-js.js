@@ -1,6 +1,5 @@
 /*
 To-Do:
-  *Make User stream update
   *figure out why usernames don't work after show new tweets button is clicked
 */
 
@@ -18,7 +17,7 @@ $(document).ready(function(){
       var tweet = streams.home[index];
       var $tweet = $('<div class="tweet"></div>');
       var tweetContent = '<p class="content">@<a class="username">' + tweet.user + '</a>: ' + tweet.message + '</p>';
-      var tweetTime = '<p class="time">' + tweet.created_at + '</p>';
+      var tweetTime = '<p class="time">' + moment(tweet.created_at).fromNow() + '</p>';
       $tweet.html(tweetContent + tweetTime);
       $tweet.appendTo($('.stream'));
       index -= 1;
@@ -42,7 +41,7 @@ $(document).ready(function(){
       var tweet = streams.users[user][index];
       var $tweet = $('<div class="tweet"></div>');
       var tweetContent = '<p class="content">@<a class="username">' + user + '</a>: ' + tweet.message + '</p>';
-      var tweetTime = '<p class="time">' + tweet.created_at + '</p>';
+      var tweetTime = '<p class="time">' + moment(tweet.created_at).fromNow() + '</p>';
       $tweet.html(tweetContent + tweetTime);
       $tweet.appendTo($('.user-tweets'));
       index -= 1;
