@@ -1,3 +1,14 @@
+/*
+To-Do:
+  Add highlight feature that changes tweet color when hovered over
+  *Make User stream update
+  Adjust positioning so that without a user stream, the tweets are centered, but with a user stream, they split-screen
+  Make colors better
+  Add button to hide user stream
+  Make tweets update automatically?
+*/
+
+
 $(document).ready(function(){
 
   var showNewTweets = function() {
@@ -42,8 +53,6 @@ $(document).ready(function(){
   $('.tweet').on('click', function() {
 
     var username = $(this).find('.username').text();
-
-    alert(username);
 
     showUserTweets(username);
 
