@@ -6,13 +6,14 @@ To-Do:
 
 $(document).ready(function(){
 
-  //show main tweet stream
+  //show main tweet stream and update user tweets if user has been chosen
   var showNewTweets = function() {
 
     $('.stream').html('');
 
     var index = streams.home.length - 1;
 
+    //iterate through each tweet and add it to the page
     while(index >= 0) {
       var tweet = streams.home[index];
       var $tweet = $('<div class="tweet"></div>');
@@ -23,16 +24,23 @@ $(document).ready(function(){
       index -= 1;
     }
 
+    //update user tweets
+    if (username) {
+      showUserTweets(username);
+    }
+
   };
 
   //load tweets when page loads
   showNewTweets();
 
+  //load new tweets when button is clicked
   $('.new-tweets').click(showNewTweets);
 
-  //show user's specific tweets
+  //show user's tweets
   var showUserTweets = function(user) {
 
+    //resets user-tweets section when a tweet is clicked
     $('.user-tweets').html('');
 
     var index = streams.users[user].length - 1;
@@ -49,18 +57,24 @@ $(document).ready(function(){
 
   };
 
+  //declare username outside of click fn so it's avail to other fns
   var username;
 
   //show user's tweets when tweet is clicked on
   $('.tweet').click(function() {
 
+    //reset username to new user
     username = $(this).find('.username').text();
 
-    alert(username);
+    console.log(username);
 
+    //reset button text
     $('.new-user-tweets').text('Show New Tweets From ' + username);
 
+    //
     showUserTweets(username);
+
+    console.log(username);
 
   });
 
